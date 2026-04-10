@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>My Hymnal</title>
 
-<!-- Google Font -->
+<!-- Modern Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -12,8 +12,6 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 20px;
-
-  /* 🌄 Nature background */
   background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') no-repeat center center fixed;
   background-size: cover;
 }
@@ -26,6 +24,23 @@ body {
   padding: 20px;
   border-radius: 15px;
   backdrop-filter: blur(10px);
+}
+
+/* Back button */
+.back-btn {
+  display: inline-block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: white;
+  background: #4CAF50;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  background: #45a049;
 }
 
 /* Title */
@@ -71,6 +86,10 @@ li:hover {
 <body>
 
 <div class="container">
+
+  <!-- 🔙 Back Button -->
+  <a href="https://canva.link/vzk75cu4neva0qp" class="back-btn">← Back</a>
+
   <h1>📖 My Hymnal</h1>
 
   <input type="text" id="search" placeholder="Search hymn...">
