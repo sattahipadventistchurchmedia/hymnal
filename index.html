@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Hymnal</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 20px;
+
+  /* 🌄 Nature background */
+  background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Glass container */
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+/* Title */
+h1 {
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Search */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+/* Song list */
+li {
+  list-style: none;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+li:hover {
+  background: #e0f2f1;
+}
+
+/* Lyrics */
+#lyrics {
+  margin-top: 20px;
+  white-space: pre-line;
+  line-height: 1.6;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+  <h1>📖 My Hymnal</h1>
+
+  <input type="text" id="search" placeholder="Search hymn...">
+
+  <ul id="songList"></ul>
+
+  <div id="lyrics"></div>
+</div>
+
+<script>
+const songs = [
+  {
+    title: "Amazing Grace",
+    lyrics: `Amazing grace! How sweet the sound,
+That saved a wretch like me!
+I once was lost, but now am found;
+Was blind, but now I see.`
+  },
+  {
+    title: "Blessed Assurance",
+    lyrics: `Blessed assurance, Jesus is mine!
+Oh, what a foretaste of glory divine!`
+  },
+  {
+    title: "How Great Thou Art",
+    lyrics: `O Lord my God, when I in awesome wonder,
+Consider all the worlds Thy hands have made.`
+  }
+];
+
+const list = document.getElementById('songList');
+const lyricsDiv = document.getElementById('lyrics');
+
+function displaySongs(filteredSongs) {
+  list.innerHTML = "";
+
+  filteredSongs.forEach(song => {
+    const li = document.createElement('li');
+    li.textContent = song.title;
+
+    li.onclick = () => {
+      lyricsDiv.textContent = song.lyrics;
+    };
+
+    list.appendChild(li);
+  });
+}
+
+displaySongs(songs);
+
+document.getElementById('search').addEventListener('input', function() {
+  const value = this.value.toLowerCase();
+
+  const filtered = songs.filter(song =>
+    song.title.toLowerCase().includes(value)
+  );
+
+  displaySongs(filtered);
+});
+</script>
+
+</body>
+</html>
